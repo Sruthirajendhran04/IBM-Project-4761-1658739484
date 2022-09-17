@@ -14,7 +14,8 @@ void loop()
   long distcm,duration;
   double temp;
   temp=analogRead(tempPin);
-  temp=(((temp/1024)*5)-0.5)*100;
+  temp=(((temp/1024)*5)-0.5)*100; //converting analog reading to celcius
+  //Turn on the buzzer when temparature increases above 70 celcius
   if(temp>70)
   {  
   	digitalWrite(3, HIGH);
