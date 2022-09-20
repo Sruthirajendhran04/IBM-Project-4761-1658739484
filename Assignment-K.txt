@@ -1,0 +1,28 @@
+int trigger = 3;
+int echo = 4;
+int light = 7;
+
+void setup()
+{
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(light, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  digitalWrite(trigger, LOW);
+  digitalWrite(trigger, HIGH);
+  delay(10);
+  digitalWrite(trigger, LOW);
+  float dura = pulseIn(echo, HIGH);
+  float dist = (dura*0.0343)/2;
+  if(dist <= 80){
+    digitalWrite(light, HIGH);
+    Serial.println("Presence Detected");
+  } else {
+    digitalWrite(light, LOW);
+    Serial.println("Optimal");
+  }
+}
